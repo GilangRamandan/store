@@ -1,18 +1,319 @@
-<!-- index.html -->
-
 <!DOCTYPE html>
 <html lang="id">
 <head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Gilz Store</title>
 
-<link rel="stylesheet" href="style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:#060816;
+color:white;
+overflow-x:hidden;
+}
+
+/* NAVBAR */
+
+header{
+width:100%;
+padding:15px 5%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+background:#0b1020;
+border-bottom:1px solid #1b2440;
+position:sticky;
+top:0;
+z-index:999;
+}
+
+.logo-box{
+display:flex;
+align-items:center;
+gap:10px;
+}
+
+.logo-box img{
+width:45px;
+height:45px;
+border-radius:12px;
+object-fit:cover;
+}
+
+.logo-box h1{
+font-size:24px;
+font-weight:700;
+color:#00d9ff;
+}
+
+nav{
+display:flex;
+gap:20px;
+}
+
+nav a{
+text-decoration:none;
+color:white;
+font-size:14px;
+transition:.3s;
+}
+
+nav a:hover{
+color:#00d9ff;
+}
+
+/* HERO */
+
+.hero{
+padding:50px 5%;
+}
+
+.banner{
+width:100%;
+height:220px;
+border-radius:25px;
+background:linear-gradient(135deg,#0b1020,#11224d,#00d9ff);
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:20px;
+box-shadow:0 0 30px rgba(0,217,255,.25);
+}
+
+.banner h2{
+font-size:42px;
+margin-bottom:10px;
+}
+
+.banner p{
+max-width:700px;
+opacity:.9;
+}
+
+/* CATEGORY */
+
+.category{
+display:flex;
+gap:12px;
+padding:25px 5%;
+overflow:auto;
+}
+
+.category button{
+background:#121932;
+border:none;
+color:white;
+padding:12px 20px;
+border-radius:50px;
+cursor:pointer;
+white-space:nowrap;
+transition:.3s;
+}
+
+.category button:hover{
+background:#00d9ff;
+color:black;
+}
+
+/* PRODUCT GRID */
+
+.products{
+padding:10px 5% 60px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:25px;
+}
+
+.card{
+background:#0c1224;
+border:1px solid #1c2547;
+border-radius:25px;
+overflow:hidden;
+transition:.3s;
+}
+
+.card:hover{
+transform:translateY(-6px);
+border-color:#00d9ff;
+box-shadow:0 0 25px rgba(0,217,255,.15);
+}
+
+.card img{
+width:100%;
+height:220px;
+object-fit:cover;
+background:white;
+}
+
+.card-content{
+padding:20px;
+}
+
+.badge{
+display:inline-block;
+background:#162046;
+color:#00d9ff;
+padding:7px 14px;
+border-radius:50px;
+font-size:12px;
+margin-bottom:15px;
+}
+
+.card h3{
+font-size:28px;
+margin-bottom:10px;
+}
+
+.card p{
+font-size:14px;
+opacity:.8;
+line-height:1.7;
+margin-bottom:20px;
+}
+
+/* PACKAGE */
+
+.package{
+background:#10182f;
+padding:15px;
+border-radius:18px;
+margin-bottom:12px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+cursor:pointer;
+border:2px solid transparent;
+transition:.3s;
+}
+
+.package:hover{
+border-color:#00d9ff;
+}
+
+.package.active{
+border-color:#00d9ff;
+background:#12244f;
+}
+
+.package-left h4{
+font-size:18px;
+margin-bottom:4px;
+}
+
+.package-left span{
+font-size:13px;
+opacity:.7;
+}
+
+.price{
+font-size:24px;
+font-weight:700;
+color:#00d9ff;
+}
+
+.order-btn{
+margin-top:20px;
+width:100%;
+padding:16px;
+border:none;
+border-radius:18px;
+font-size:17px;
+font-weight:700;
+background:linear-gradient(90deg,#00d9ff,#00ffa6);
+color:black;
+cursor:pointer;
+transition:.3s;
+}
+
+.order-btn:hover{
+transform:scale(1.02);
+}
+
+/* ABOUT */
+
+.about{
+padding:70px 5%;
+}
+
+.about-box{
+background:#0c1224;
+border:1px solid #1c2547;
+padding:35px;
+border-radius:25px;
+}
+
+.about-box h2{
+margin-bottom:20px;
+font-size:35px;
+color:#00d9ff;
+}
+
+.about-box p{
+line-height:2;
+opacity:.85;
+}
+
+/* CONTACT */
+
+.contact{
+padding:0 5% 80px;
+}
+
+.contact-box{
+background:#0c1224;
+border:1px solid #1c2547;
+padding:35px;
+border-radius:25px;
+}
+
+.contact-box h2{
+margin-bottom:20px;
+font-size:35px;
+color:#00d9ff;
+}
+
+.contact-box a{
+display:block;
+margin-top:15px;
+color:white;
+text-decoration:none;
+background:#10182f;
+padding:15px;
+border-radius:14px;
+transition:.3s;
+}
+
+.contact-box a:hover{
+background:#00d9ff;
+color:black;
+}
+
+/* FOOTER */
+
+footer{
+padding:30px;
+text-align:center;
+background:#0b1020;
+border-top:1px solid #1b2440;
+font-size:14px;
+opacity:.7;
+}
+
+</style>
 </head>
-
 <body>
 
 <header>
@@ -25,7 +326,7 @@
 <nav>
 <a href="#">Home</a>
 <a href="#produk">Produk</a>
-<a href="dashboard.html">Dashboard</a>
+<a href="#about">About</a>
 <a href="#contact">Contact</a>
 </nav>
 
@@ -35,18 +336,25 @@
 
 <div class="banner">
 <h2>GILZ STORE</h2>
-
 <p>
-Premium Apps Murah & Fast Response
+Jual Premium Apps Murah & Fast Response.
+Proses cepat langsung via WhatsApp.
 </p>
-
 </div>
 
 </section>
 
+<div class="category">
+<button>Semua</button>
+<button>APP PREMIUM</button>
+<button>STREAMING</button>
+<button>MUSIC</button>
+<button>EDITING</button>
+</div>
+
 <section class="products" id="produk">
 
-<!-- CARD -->
+<!-- YOUTUBE -->
 
 <div class="card">
 
@@ -54,54 +362,553 @@ Premium Apps Murah & Fast Response
 
 <div class="card-content">
 
-<div class="badge">
-APP PREMIUM
-</div>
+<div class="badge">APP PREMIUM</div>
 
 <h3>YouTube Premium</h3>
 
 <p>
-Bebas iklan dan background play.
+Bebas iklan, background play, kualitas HD.
 </p>
 
-<div class="package active">
-<div>
+<div class="package active" onclick="selectPackage(this,'YouTube Premium','1 Bulan - Rp 8K')">
+<div class="package-left">
 <h4>1 Bulan</h4>
 <span>Private Family</span>
 </div>
-
-<div class="price">
-Rp 8K
-</div>
+<div class="price">Rp 8K</div>
 </div>
 
-<div class="package">
-<div>
+<div class="package" onclick="selectPackage(this,'YouTube Premium','2 Bulan - Rp 15K')">
+<div class="package-left">
 <h4>2 Bulan</h4>
 <span>Fast Invite</span>
 </div>
-
-<div class="price">
-Rp 15K
-</div>
+<div class="price">Rp 15K</div>
 </div>
 
-<div class="package">
-<div>
+<div class="package" onclick="selectPackage(this,'YouTube Premium','3 Bulan - Rp 20K')">
+<div class="package-left">
 <h4>3 Bulan</h4>
 <span>Garansi</span>
 </div>
+<div class="price">Rp 20K</div>
+</div>
 
-<div class="price">
-Rp 20K
+<button class="order-btn" onclick="orderNow(this)">Order Sekarang</button>
+
+</div>
+</div>
+
+<!-- CANVA -->
+
+<div class="card">
+
+<img src="canva.png">
+
+<div class="card-content">
+
+<div class="badge">APP PREMIUM</div>
+
+<h3>Canva Pro</h3>
+
+<p>
+Unlock semua fitur premium Canva Pro.
+</p>
+
+<div class="package active" onclick="selectPackage(this,'Canva Pro','1 Bulan - Rp 8K')">
+<div class="package-left">
+<h4>1 Bulan</h4>
+<span>Private Invite</span>
+</div>
+<div class="price">Rp 8K</div>
+</div>
+
+<div class="package" onclick="selectPackage(this,'Canva Pro','2 Bulan - Rp 15K')">
+<div class="package-left">
+<h4>2 Bulan</h4>
+<span>Fast Proses</span>
+</div>
+<div class="price">Rp 15K</div>
+</div>
+
+<div class="package" onclick="selectPackage(this,'Canva Pro','3 Bulan - Rp 20K')">
+<div class="package-left">
+<h4>3 Bulan</h4>
+<span>Garansi</span>
+</div>
+<div class="price">Rp 20K</div>
+</div>
+
+<button class="order-btn" onclick="orderNow(this)">Order Sekarang</button>
+
 </div>
 </div>
 
-<button class="order-btn">
-Order Sekarang
-</button>
+<!-- ALIGHT MOTION -->
+
+<div class="card">
+
+<img src="am.png">
+
+<div class="card-content">
+
+<div class="badge">APP PREMIUM</div>
+
+<h3>Alight Motion</h3>
+
+<p>
+Unlock preset premium & export tanpa watermark.
+</p>
+
+<div class="package active" onclick="selectPackage(this,'Alight Motion','1 Bulan - Rp 8K')">
+<div class="package-left">
+<h4>1 Bulan</h4>
+<span>Private Account</span>
+</div>
+<div class="price">Rp 8K</div>
+</div>
+
+<div class="package" onclick="selectPackage(this,'Alight Motion','2 Bulan - Rp 15K')">
+<div class="package-left">
+<h4>2 Bulan</h4>
+<span>Garansi</span>
+</div>
+<div class="price">Rp 15K</div>
+</div>
+
+<div class="package" onclick="selectPackage(this,'Alight Motion','3 Bulan - Rp 20K')">
+<div class="package-left">
+<h4>3 Bulan</h4>
+<span>Full Premium</span>
+</div>
+<div class="price">Rp 20K</div>
+</div>
+
+<button class="order-btn" onclick="orderNow(this)">Order Sekarang</button>
 
 </div>
+</div>
+
+<!-- SPOTIFY -->
+
+<div class="card">
+
+<img src="spotify.png">
+
+<div class="card-content">
+
+<div class="badge">APP PREMIUM</div>
+
+<h3>Spotify Premium</h3>
+
+<p>
+Denger musik tanpa iklan kualitas tinggi.
+</p>
+
+<div class="package active" onclick="selectPackage(this,'Spotify Premium','1 Bulan - Rp 8K')">
+<div class="package-left">
+<h4>1 Bulan</h4>
+<span>Private Family</span>
+</div>
+<div class="price">Rp 8K</div>
+</div>
+
+<div class="package" onclick="selectPackage(this,'Spotify Premium','2 Bulan - Rp 15K')">
+<div class="package-left">
+<h4>2 Bulan</h4>
+<span>Fast Invite</span>
+</div>
+<div class="price">Rp 15K</div>
+</div>
+
+<div class="package" onclick="selectPackage(this,'Spotify Premium','3 Bulan - Rp 20K')">
+<div class="package-left">
+<h4>3 Bulan</h4>
+<span>Garansi</span>
+</div>
+<div class="price">Rp 20K</div>
+</div>
+
+<button class="order-btn" onclick="orderNow(this)">Order Sekarang</button>
+
+</div>
+</div>
+
+<!-- CAPCUT -->
+
+<div class="card">
+
+<img src="capcut.png">
+
+<div class="card-content">
+
+<div class="badge">APP PREMIUM</div>
+
+<h3>CapCut Pro</h3>
+
+<p>
+Unlock semua efek premium dan export HD.
+</p>
+
+<div class="package active" onclick="selectPackage(this,'CapCut Pro','1 Bulan - Rp 8K')">
+<div class="package-left">
+<h4>1 Bulan</h4>
+<span>Private Account</span>
+</div>
+<div class="price">Rp 8K</div>
+</div>
+
+<div class="package" onclick="selectPackage(this,'CapCut Pro','2 Bulan - Rp 15K')">
+<div class="package-left">
+<h4>2 Bulan</h4>
+<span>Garansi</span>
+</div>
+<div class="price">Rp 15K</div>
+</div>
+
+<div class="package" onclick="selectPackage(this,'CapCut Pro','3 Bulan - Rp 20K')">
+<div class="package-left">
+<h4>3 Bulan</h4>
+<span>Full Premium</span>
+</div>
+<div class="price">Rp 20K</div>
+</div>
+
+<button class="order-btn" onclick="orderNow(this)">Order Sekarang</button>
+
+</div>
+</div>
+
+<!-- CHATGPT -->
+
+<div class="card">
+
+<img src="chatgpt.png">
+
+<div class="card-content">
+
+<div class="badge">APP PREMIUM</div>
+
+<h3>ChatGPT Pro</h3>
+
+<p>
+Akses AI premium lebih cepat dan lengkap.
+</p>
+
+<div class="package active" onclick="selectPackage(this,'ChatGPT Pro','1 Bulan - Rp 8K')">
+<div class="package-left">
+<h4>1 Bulan</h4>
+<span>Shared Account</span>
+</div>
+<div class="price">Rp 8K</div>
+</div>
+
+<div class="package" onclick="selectPackage(this,'ChatGPT Pro','2 Bulan - Rp 15K')">
+<div class="package-left">
+<h4>2 Bulan</h4>
+<span>Fast Proses</span>
+</div>
+<div class="price">Rp 15K</div>
+</div>
+
+<div class="package" onclick="selectPackage(this,'ChatGPT Pro','3 Bulan - Rp 20K')">
+<div class="package-left">
+<h4>3 Bulan</h4>
+<span>Garansi</span>
+</div>
+<div class="price">Rp 20K</div>
+</div>
+
+<button class="order-btn" onclick="orderNow(this)">Order Sekarang</button>
+
+</div>
+</div>
+  
+<!-- NETFLIX -->
+
+<div class="card">
+
+<img src="Netflix.png">
+
+<div class="card-content">
+
+<div class="badge">APP PREMIUM</div>
+
+<h3>Netflix Premium</h3>
+
+<p>
+Nonton film dan series tanpa batas kualitas HD.
+</p>
+
+<div class="package active" onclick="selectPackage(this,'Netflix Premium','1 Bulan - Rp 8K')">
+<div class="package-left">
+<h4>1 Bulan</h4>
+<span>Sharing Account</span>
+</div>
+<div class="price">Rp 8K</div>
+</div>
+
+<div class="package" onclick="selectPackage(this,'Netflix Premium','2 Bulan - Rp 15K')">
+<div class="package-left">
+<h4>2 Bulan</h4>
+<span>Fast Proses</span>
+</div>
+<div class="price">Rp 15K</div>
+</div>
+
+<div class="package" onclick="selectPackage(this,'Netflix Premium','3 Bulan - Rp 20K')">
+<div class="package-left">
+<h4>3 Bulan</h4>
+<span>Garansi</span>
+</div>
+<div class="price">Rp 20K</div>
+</div>
+
+<button class="order-btn" onclick="orderNow(this)">Order Sekarang</button>
+
+</div>
+</div>
+
+<!-- VIU -->
+
+<div class="card">
+
+<img src="viu.png">
+
+<div class="card-content">
+
+<div class="badge">APP PREMIUM</div>
+
+<h3>VIU Premium</h3>
+
+<p>
+Streaming drama dan anime tanpa iklan.
+</p>
+
+<div class="package active" onclick="selectPackage(this,'VIU Premium','1 Bulan - Rp 8K')">
+<div class="package-left">
+<h4>1 Bulan</h4>
+<span>Private Account</span>
+</div>
+<div class="price">Rp 8K</div>
+</div>
+
+<div class="package" onclick="selectPackage(this,'VIU Premium','2 Bulan - Rp 15K')">
+<div class="package-left">
+<h4>2 Bulan</h4>
+<span>Fast Invite</span>
+</div>
+<div class="price">Rp 15K</div>
+</div>
+
+<div class="package" onclick="selectPackage(this,'VIU Premium','3 Bulan - Rp 20K')">
+<div class="package-left">
+<h4>3 Bulan</h4>
+<span>Garansi</span>
+</div>
+<div class="price">Rp 20K</div>
+</div>
+
+<button class="order-btn" onclick="orderNow(this)">Order Sekarang</button>
+
+</div>
+</div>
+
+<!-- WETV -->
+
+<div class="card">
+
+<img src="wetv.png">
+
+<div class="card-content">
+
+<div class="badge">APP PREMIUM</div>
+
+<h3>WeTV Premium</h3>
+
+<p>
+Nonton drama Asia dan anime kualitas HD.
+</p>
+
+<div class="package active" onclick="selectPackage(this,'WeTV Premium','1 Bulan - Rp 8K')">
+<div class="package-left">
+<h4>1 Bulan</h4>
+<span>Private Account</span>
+</div>
+<div class="price">Rp 8K</div>
+</div>
+
+<div class="package" onclick="selectPackage(this,'WeTV Premium','2 Bulan - Rp 15K')">
+<div class="package-left">
+<h4>2 Bulan</h4>
+<span>Fast Invite</span>
+</div>
+<div class="price">Rp 15K</div>
+</div>
+
+<div class="package" onclick="selectPackage(this,'WeTV Premium','3 Bulan - Rp 20K')">
+<div class="package-left">
+<h4>3 Bulan</h4>
+<span>Garansi</span>
+</div>
+<div class="price">Rp 20K</div>
+</div>
+
+<button class="order-btn" onclick="orderNow(this)">Order Sekarang</button>
+
+</div>
+</div>
+
+<!-- IQIYI -->
+
+<div class="card">
+
+<img src="iqiyi.jpg">
+
+<div class="card-content">
+
+<div class="badge">APP PREMIUM</div>
+
+<h3>iQIYI Premium</h3>
+
+<p>
+Streaming anime dan drama premium tanpa batas.
+</p>
+
+<div class="package active" onclick="selectPackage(this,'iQIYI Premium','1 Bulan - Rp 8K')">
+<div class="package-left">
+<h4>1 Bulan</h4>
+<span>Private Account</span>
+</div>
+<div class="price">Rp 8K</div>
+</div>
+
+<div class="package" onclick="selectPackage(this,'iQIYI Premium','2 Bulan - Rp 15K')">
+<div class="package-left">
+<h4>2 Bulan</h4>
+<span>Fast Proses</span>
+</div>
+<div class="price">Rp 15K</div>
+</div>
+
+<div class="package" onclick="selectPackage(this,'iQIYI Premium','3 Bulan - Rp 20K')">
+<div class="package-left">
+<h4>3 Bulan</h4>
+<span>Garansi</span>
+</div>
+<div class="price">Rp 20K</div>
+</div>
+
+<button class="order-btn" onclick="orderNow(this)">Order Sekarang</button>
+
+</div>
+</div>
+
+<!-- APPLE MUSIC -->
+
+<div class="card">
+
+<img src="applemusic.png">
+
+<div class="card-content">
+
+<div class="badge">APP PREMIUM</div>
+
+<h3>Apple Music</h3>
+
+<p>
+Denger musik premium kualitas tinggi tanpa iklan.
+</p>
+
+<div class="package active" onclick="selectPackage(this,'Apple Music','1 Bulan - Rp 8K')">
+<div class="package-left">
+<h4>1 Bulan</h4>
+<span>Private Account</span>
+</div>
+<div class="price">Rp 8K</div>
+</div>
+
+<div class="package" onclick="selectPackage(this,'Apple Music','2 Bulan - Rp 15K')">
+<div class="package-left">
+<h4>2 Bulan</h4>
+<span>Fast Proses</span>
+</div>
+<div class="price">Rp 15K</div>
+</div>
+
+<div class="package" onclick="selectPackage(this,'Apple Music','3 Bulan - Rp 20K')">
+<div class="package-left">
+<h4>3 Bulan</h4>
+<span>Garansi</span>
+</div>
+<div class="price">Rp 20K</div>
+</div>
+
+<button class="order-btn" onclick="orderNow(this)">Order Sekarang</button>
+
+</div>
+</div>
+
+<!-- BSTATION -->
+
+<div class="card">
+
+<img src="bstation.jpg">
+
+<div class="card-content">
+
+<div class="badge">APP PREMIUM</div>
+
+<h3>Bstation Premium</h3>
+
+<p>
+Nonton anime premium tanpa iklan kualitas HD.
+</p>
+
+<div class="package active" onclick="selectPackage(this,'Bstation Premium','1 Bulan - Rp 8K')">
+<div class="package-left">
+<h4>1 Bulan</h4>
+<span>Private Account</span>
+</div>
+<div class="price">Rp 8K</div>
+</div>
+
+<div class="package" onclick="selectPackage(this,'Bstation Premium','2 Bulan - Rp 15K')">
+<div class="package-left">
+<h4>2 Bulan</h4>
+<span>Fast Proses</span>
+</div>
+<div class="price">Rp 15K</div>
+</div>
+
+<div class="package" onclick="selectPackage(this,'Bstation Premium','3 Bulan - Rp 20K')">
+<div class="package-left">
+<h4>3 Bulan</h4>
+<span>Garansi</span>
+</div>
+<div class="price">Rp 20K</div>
+</div>
+
+<button class="order-btn" onclick="orderNow(this)">Order Sekarang</button>
+
+</div>
+</div>
+
+</section>
+
+<section class="about" id="about">
+
+<div class="about-box">
+
+<h2>About Gilz Store</h2>
+
+<p>
+Gilz Store adalah toko digital premium apps terpercaya.
+Menyediakan YouTube Premium, Canva Pro, Spotify, CapCut,
+Alight Motion, dan berbagai layanan premium lainnya.
+Fast response, harga murah, dan proses cepat.
+</p>
+
 </div>
 
 </section>
@@ -116,15 +923,57 @@ Order Sekarang
 WhatsApp Admin
 </a>
 
+<a href="#">
+Instagram Store
+</a>
+
 </div>
 
 </section>
 
 <footer>
-© 2026 Gilz Store
+© 2026 Gilz Store - All Rights Reserved
 </footer>
 
-<script src="script.js"></script>
+<script>
+
+let selectedProduct = "";
+let selectedPackageText = "";
+
+function selectPackage(element, product, paket){
+
+let card = element.parentElement;
+
+card.querySelectorAll('.package').forEach(pkg=>{
+pkg.classList.remove('active');
+});
+
+element.classList.add('active');
+
+selectedProduct = product;
+selectedPackageText = paket;
+
+}
+
+function orderNow(button){
+
+let card = button.parentElement;
+
+let activePackage = card.querySelector('.package.active');
+
+let product = card.querySelector('h3').innerText;
+
+let paket = activePackage.innerText.replace(/\n/g,' ');
+
+let text =
+`Halo Gilz Store,%0ASaya ingin order:%0A%0AProduk: ${product}%0APaket: ${paket}`;
+
+window.location.href =
+`https://wa.me/6287886783807?text=${text}`;
+
+}
+
+</script>
 
 </body>
 </html>
