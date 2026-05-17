@@ -1,395 +1,52 @@
+<!-- index.html -->
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Gilz Store</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 
-<style>
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Poppins',sans-serif;
-}
-
-body{
-background:#070b17;
-color:white;
-overflow-x:hidden;
-}
-
-/* NAVBAR */
-
-nav{
-width:100%;
-padding:15px 5%;
-display:flex;
-justify-content:space-between;
-align-items:center;
-background:#0d1224;
-border-bottom:1px solid rgba(255,255,255,0.05);
-position:sticky;
-top:0;
-z-index:999;
-}
-
-.logo{
-display:flex;
-align-items:center;
-gap:10px;
-font-size:22px;
-font-weight:700;
-color:#4ea1ff;
-}
-
-.logo img{
-width:42px;
-height:42px;
-border-radius:12px;
-object-fit:cover;
-}
-
-.menu{
-display:flex;
-gap:25px;
-}
-
-.menu a{
-text-decoration:none;
-color:#dcdcdc;
-font-size:14px;
-transition:0.3s;
-}
-
-.menu a:hover{
-color:#4ea1ff;
-}
-
-/* HERO */
-
-.hero{
-padding:30px 5%;
-}
-
-.banner{
-width:100%;
-height:230px;
-border-radius:25px;
-overflow:hidden;
-position:relative;
-background:linear-gradient(135deg,#16203a,#0d1224);
-display:flex;
-align-items:center;
-justify-content:center;
-text-align:center;
-}
-
-.banner::before{
-content:'';
-position:absolute;
-width:300px;
-height:300px;
-background:#4ea1ff33;
-border-radius:50%;
-filter:blur(80px);
-left:-80px;
-top:-80px;
-}
-
-.banner::after{
-content:'';
-position:absolute;
-width:300px;
-height:300px;
-background:#00ffd533;
-border-radius:50%;
-filter:blur(80px);
-right:-80px;
-bottom:-80px;
-}
-
-.banner-content{
-position:relative;
-z-index:2;
-}
-
-.banner-content h1{
-font-size:45px;
-margin-bottom:10px;
-}
-
-.banner-content p{
-color:#c7c7c7;
-}
-
-/* CATEGORY */
-
-.category{
-padding:0 5%;
-display:flex;
-gap:12px;
-overflow:auto;
-margin-top:20px;
-}
-
-.category button{
-background:#111935;
-border:none;
-padding:12px 20px;
-border-radius:14px;
-color:white;
-cursor:pointer;
-white-space:nowrap;
-font-weight:500;
-transition:0.3s;
-}
-
-.category button:hover{
-background:#4ea1ff;
-}
-
-/* PRODUCTS */
-
-.products{
-padding:35px 5%;
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-gap:22px;
-}
-
-.card{
-background:#10172d;
-border-radius:22px;
-overflow:hidden;
-border:1px solid rgba(255,255,255,0.05);
-transition:0.3s;
-}
-
-.card:hover{
-transform:translateY(-6px);
-border-color:#4ea1ff;
-}
-
-.card img{
-width:100%;
-height:220px;
-object-fit:cover;
-background:white;
-padding:20px;
-}
-
-.card-content{
-padding:18px;
-}
-
-.badge{
-display:inline-block;
-background:#1a2444;
-padding:6px 12px;
-border-radius:999px;
-font-size:12px;
-margin-bottom:12px;
-color:#4ea1ff;
-}
-
-.card h3{
-font-size:21px;
-margin-bottom:10px;
-}
-
-.desc{
-color:#bdbdbd;
-font-size:14px;
-margin-bottom:16px;
-line-height:1.6;
-}
-
-/* VARIANT */
-
-.variant{
-background:#0b1124;
-padding:12px;
-border-radius:15px;
-margin-bottom:12px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-}
-
-.variant-left h4{
-font-size:15px;
-margin-bottom:4px;
-}
-
-.variant-left p{
-font-size:13px;
-color:#7f8aa7;
-}
-
-.price{
-font-size:17px;
-font-weight:700;
-color:#4ea1ff;
-}
-
-/* BUTTON */
-
-.order-btn{
-display:block;
-width:100%;
-text-align:center;
-padding:14px;
-background:linear-gradient(135deg,#4ea1ff,#00ffd5);
-border-radius:14px;
-text-decoration:none;
-color:black;
-font-weight:700;
-margin-top:10px;
-transition:0.3s;
-}
-
-.order-btn:hover{
-transform:scale(1.03);
-}
-
-/* FOOTER */
-
-footer{
-margin-top:40px;
-padding:30px;
-text-align:center;
-color:#8f8f8f;
-border-top:1px solid rgba(255,255,255,0.05);
-}
-
-/* MOBILE */
-
-@media(max-width:700px){
-
-.banner{
-height:200px;
-}
-
-.banner-content h1{
-font-size:32px;
-}
-
-.menu{
-display:none;
-}
-
-}
-
-</style>
 </head>
 
 <body>
 
-<!-- NAVBAR -->
+<header>
+
+<div class="logo-box">
+<img src="gilz.png">
+<h1>Gilz Store</h1>
+</div>
 
 <nav>
-
-<div class="logo">
-<img src="gilz.png">
-<span>Gilz Store</span>
-</div>
-
-<div class="menu">
 <a href="#">Home</a>
-<a href="#">Produk</a>
-<a href="#">Testimoni</a>
-<a href="#">Contact</a>
-</div>
-
+<a href="#produk">Produk</a>
+<a href="dashboard.html">Dashboard</a>
+<a href="#contact">Contact</a>
 </nav>
 
-<!-- HERO -->
+</header>
 
 <section class="hero">
 
 <div class="banner">
+<h2>GILZ STORE</h2>
 
-<div class="banner-content">
-<h1>GILZ STORE</h1>
-<p>Jual Premium Apps Murah • Fast Respon • Aman</p>
-</div>
+<p>
+Premium Apps Murah & Fast Response
+</p>
 
 </div>
 
 </section>
 
-<!-- CATEGORY -->
+<section class="products" id="produk">
 
-<div class="category">
-<button>Semua</button>
-<button>Canva</button>
-<button>YouTube</button>
-<button>Spotify</button>
-<button>Alight Motion</button>
-<button>CapCut</button>
-<button>Netflix</button>
-</div>
-
-<!-- PRODUCTS -->
-
-<section class="products">
-
-<!-- CANVA -->
-
-<div class="card">
-
-<img src="canva.png">
-
-<div class="card-content">
-
-<div class="badge">APP PREMIUM</div>
-
-<h3>Canva Pro</h3>
-
-<p class="desc">
-Canva premium sharing private.
-Fast proses dan aman digunakan.
-</p>
-
-<div class="variant">
-<div class="variant-left">
-<h4>1 Bulan</h4>
-<p>Garansi 7 Hari</p>
-</div>
-<div class="price">Rp 5K</div>
-</div>
-
-<div class="variant">
-<div class="variant-left">
-<h4>3 Bulan</h4>
-<p>Garansi 14 Hari</p>
-</div>
-<div class="price">Rp 12K</div>
-</div>
-
-<div class="variant">
-<div class="variant-left">
-<h4>1 Tahun</h4>
-<p>Garansi 1 Bulan</p>
-</div>
-<div class="price">Rp 35K</div>
-</div>
-
-<a class="order-btn"
-href="https://wa.me/6287886783807?text=Halo%20saya%20mau%20order%20Canva%20Pro">
-Order Sekarang
-</a>
-
-</div>
-</div>
-
-<!-- YOUTUBE -->
+<!-- CARD -->
 
 <div class="card">
 
@@ -397,150 +54,77 @@ Order Sekarang
 
 <div class="card-content">
 
-<div class="badge">APP PREMIUM</div>
+<div class="badge">
+APP PREMIUM
+</div>
 
 <h3>YouTube Premium</h3>
 
-<p class="desc">
-Bebas iklan, bisa play di background,
-dan kualitas HD.
+<p>
+Bebas iklan dan background play.
 </p>
 
-<div class="variant">
-<div class="variant-left">
+<div class="package active">
+<div>
 <h4>1 Bulan</h4>
-<p>Private Family</p>
-</div>
-<div class="price">Rp 8K</div>
+<span>Private Family</span>
 </div>
 
-<div class="variant">
-<div class="variant-left">
+<div class="price">
+Rp 8K
+</div>
+</div>
+
+<div class="package">
+<div>
+<h4>2 Bulan</h4>
+<span>Fast Invite</span>
+</div>
+
+<div class="price">
+Rp 15K
+</div>
+</div>
+
+<div class="package">
+<div>
 <h4>3 Bulan</h4>
-<p>Fast Invite</p>
-</div>
-<div class="price">Rp 20K</div>
+<span>Garansi</span>
 </div>
 
-<div class="variant">
-<div class="variant-left">
-<h4>1 Tahun</h4>
-<p>Garansi 1 Bulan</p>
+<div class="price">
+Rp 20K
 </div>
-<div class="price">Rp 65K</div>
 </div>
 
-<a class="order-btn"
-href="https://wa.me/6287886783807?text=Halo%20saya%20mau%20order%20YouTube%20Premium">
+<button class="order-btn">
 Order Sekarang
-</a>
-
-</div>
-</div>
-
-<!-- ALIGHT MOTION -->
-
-<div class="card">
-
-<img src="am.png">
-
-<div class="card-content">
-
-<div class="badge">APP PREMIUM</div>
-
-<h3>Alight Motion</h3>
-
-<p class="desc">
-Unlock semua efek premium
-dan export tanpa watermark.
-</p>
-
-<div class="variant">
-<div class="variant-left">
-<h4>1 Bulan</h4>
-<p>Private Account</p>
-</div>
-<div class="price">Rp 10K</div>
-</div>
-
-<div class="variant">
-<div class="variant-left">
-<h4>3 Bulan</h4>
-<p>Garansi 14 Hari</p>
-</div>
-<div class="price">Rp 22K</div>
-</div>
-
-<div class="variant">
-<div class="variant-left">
-<h4>1 Tahun</h4>
-<p>Full Premium</p>
-</div>
-<div class="price">Rp 50K</div>
-</div>
-
-<a class="order-btn"
-href="https://wa.me/6287886783807?text=Halo%20saya%20mau%20order%20Alight%20Motion">
-Order Sekarang
-</a>
-
-</div>
-</div>
-
-<!-- SPOTIFY -->
-
-<div class="card">
-
-<img src="spotify.png">
-
-<div class="card-content">
-
-<div class="badge">APP PREMIUM</div>
-
-<h3>Spotify Premium</h3>
-
-<p class="desc">
-Musik tanpa iklan,
-kualitas audio premium HD.
-</p>
-
-<div class="variant">
-<div class="variant-left">
-<h4>1 Bulan</h4>
-<p>Private Plan</p>
-</div>
-<div class="price">Rp 8K</div>
-</div>
-
-<div class="variant">
-<div class="variant-left">
-<h4>3 Bulan</h4>
-<p>Garansi 14 Hari</p>
-</div>
-<div class="price">Rp 20K</div>
-</div>
-
-<div class="variant">
-<div class="variant-left">
-<h4>1 Tahun</h4>
-<p>Fast Proses</p>
-</div>
-<div class="price">Rp 55K</div>
-</div>
-
-<a class="order-btn"
-href="https://wa.me/6287886783807?text=Halo%20saya%20mau%20order%20Spotify%20Premium">
-Order Sekarang
-</a>
+</button>
 
 </div>
 </div>
 
 </section>
 
+<section class="contact" id="contact">
+
+<div class="contact-box">
+
+<h2>Contact Admin</h2>
+
+<a href="https://wa.me/6287886783807">
+WhatsApp Admin
+</a>
+
+</div>
+
+</section>
+
 <footer>
-© 2026 Gilz Store • All Rights Reserved
+© 2026 Gilz Store
 </footer>
+
+<script src="script.js"></script>
 
 </body>
 </html>
