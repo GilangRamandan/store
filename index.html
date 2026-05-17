@@ -1,293 +1,525 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>GilangXD</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-      font-family:Arial, Helvetica, sans-serif;
-      scroll-behavior:smooth;
-    }
+<title>Gilz Store</title>
 
-    body{
-      background:#0f0f0f;
-      color:white;
-      overflow-x:hidden;
-    }
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
 
-    header{
-      width:100%;
-      padding:20px 8%;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      background:#111;
-      border-bottom:1px solid #222;
-      position:sticky;
-      top:0;
-      z-index:1000;
-    }
+<style>
 
-    .logo{
-      font-size:28px;
-      font-weight:bold;
-      color:#00ffae;
-    }
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, sans-serif;
+}
 
-    nav a{
-      text-decoration:none;
-      color:white;
-      margin-left:20px;
-      transition:0.3s;
-    }
+body{
+background:#050505;
+color:white;
+}
 
-    nav a:hover{
-      color:#00ffae;
-    }
+/* HEADER */
 
-    section{
-      padding:80px 8%;
-    }
+header{
+background:linear-gradient(90deg,#1f245c,#111);
+padding:15px 20px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+position:sticky;
+top:0;
+z-index:999;
+}
 
-    .hero{
-      height:90vh;
-      display:flex;
-      flex-direction:column;
-      justify-content:center;
-      align-items:center;
-      text-align:center;
-      background:linear-gradient(to bottom right,#111,#1b1b1b);
-    }
+.logo{
+font-size:28px;
+font-weight:bold;
+color:white;
+}
 
-    .hero h1{
-      font-size:60px;
-      margin-bottom:15px;
-    }
+.search{
+background:#f1b521;
+width:45px;
+height:45px;
+border-radius:12px;
+display:flex;
+justify-content:center;
+align-items:center;
+color:black;
+font-size:20px;
+}
 
-    .hero span{
-      color:#00ffae;
-    }
+/* HERO */
 
-    .hero p{
-      max-width:650px;
-      color:#bdbdbd;
-      margin-bottom:25px;
-      line-height:1.7;
-    }
+.hero{
+padding:60px 20px;
+text-align:center;
+background:url('https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=1200') center/cover;
+position:relative;
+}
 
-    .btn{
-      padding:14px 28px;
-      background:#00ffae;
-      color:black;
-      text-decoration:none;
-      border-radius:10px;
-      font-weight:bold;
-      transition:0.3s;
-    }
+.hero::before{
+content:'';
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.7);
+}
 
-    .btn:hover{
-      transform:scale(1.05);
-      background:white;
-    }
+.hero-content{
+position:relative;
+z-index:2;
+}
 
-    .title{
-      text-align:center;
-      margin-bottom:40px;
-      font-size:40px;
-      color:#00ffae;
-    }
+.hero h1{
+font-size:42px;
+margin-bottom:10px;
+}
 
-    .cards{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-      gap:20px;
-    }
+.hero p{
+color:#ddd;
+font-size:15px;
+line-height:1.7;
+max-width:700px;
+margin:auto;
+}
 
-    .card{
-      background:#161616;
-      padding:25px;
-      border-radius:15px;
-      border:1px solid #252525;
-      transition:0.3s;
-    }
+/* STATS */
 
-    .card:hover{
-      transform:translateY(-5px);
-      border-color:#00ffae;
-    }
+.stats{
+display:flex;
+gap:12px;
+padding:20px;
+justify-content:center;
+flex-wrap:wrap;
+}
 
-    .card h2{
-      margin-bottom:10px;
-      color:#00ffae;
-    }
+.stat{
+padding:12px 18px;
+border-radius:999px;
+font-weight:bold;
+font-size:14px;
+}
 
-    .about{
-      text-align:center;
-      line-height:1.8;
-      color:#cfcfcf;
-      max-width:800px;
-      margin:auto;
-    }
+.orange{
+background:linear-gradient(90deg,#ff6a00,#ffb300);
+}
 
-    .contact-box{
-      max-width:500px;
-      margin:auto;
-      display:flex;
-      flex-direction:column;
-      gap:15px;
-    }
+.blue{
+background:linear-gradient(90deg,#00bfff,#0066ff);
+}
 
-    .contact-box input,
-    .contact-box textarea{
-      padding:15px;
-      border:none;
-      border-radius:10px;
-      background:#1b1b1b;
-      color:white;
-    }
+.green{
+background:linear-gradient(90deg,#00c853,#64dd17);
+}
 
-    .contact-box button{
-      padding:15px;
-      border:none;
-      border-radius:10px;
-      background:#00ffae;
-      color:black;
-      font-weight:bold;
-      cursor:pointer;
-      transition:0.3s;
-    }
+/* SECTION */
 
-    .contact-box button:hover{
-      background:white;
-    }
+.section-title{
+font-size:30px;
+padding:20px;
+font-weight:bold;
+}
 
-    footer{
-      text-align:center;
-      padding:25px;
-      background:#111;
-      border-top:1px solid #222;
-      color:#888;
-    }
+/* PRODUCTS */
 
-    @media(max-width:768px){
+.products{
+padding:0 20px 40px;
+display:grid;
+gap:20px;
+}
 
-      .hero h1{
-        font-size:40px;
-      }
+.card{
+background:#0d0d0d;
+padding:20px;
+border-radius:22px;
+border:1px solid #1f1f1f;
+transition:0.3s;
+}
 
-      nav{
-        display:flex;
-        gap:10px;
-        flex-wrap:wrap;
-        justify-content:flex-end;
-      }
+.card:hover{
+transform:translateY(-5px);
+border-color:#f1b521;
+}
 
-      nav a{
-        margin-left:0;
-      }
-    }
+.card img{
+width:70px;
+height:70px;
+object-fit:contain;
+margin-bottom:15px;
+background:white;
+padding:10px;
+border-radius:15px;
+}
 
-  </style>
+.card h2{
+font-size:24px;
+margin-bottom:12px;
+}
+
+.package{
+background:#151515;
+padding:14px;
+border-radius:14px;
+margin-bottom:12px;
+border:1px solid #252525;
+}
+
+.package-title{
+font-size:18px;
+font-weight:bold;
+margin-bottom:5px;
+}
+
+.package-price{
+color:#f1b521;
+font-size:20px;
+font-weight:bold;
+margin-bottom:5px;
+}
+
+.package span{
+font-size:13px;
+color:#aaa;
+display:block;
+margin-bottom:10px;
+}
+
+.buy-btn{
+display:inline-block;
+background:#25d366;
+padding:12px 18px;
+border-radius:12px;
+color:white;
+text-decoration:none;
+font-weight:bold;
+transition:0.3s;
+}
+
+.buy-btn:hover{
+opacity:0.9;
+transform:scale(1.03);
+}
+
+/* FOOTER */
+
+footer{
+padding:30px;
+text-align:center;
+color:#888;
+border-top:1px solid #222;
+margin-top:20px;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+.hero h1{
+font-size:34px;
+}
+
+}
+
+</style>
 </head>
 
 <body>
 
-  <header>
+<!-- HEADER -->
 
-    <div class="logo">GilangXD</div>
+<header>
 
-    <nav>
-      <a href="#home">Home</a>
-      <a href="#project">Project</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
-    </nav>
+<div class="logo">
+Gilz Store
+</div>
 
-  </header>
+<div class="search">
+<i class="fas fa-search"></i>
+</div>
 
-  <section class="hero" id="home">
+</header>
 
-    <h1>WELCOME TO <span>GILANGXD</span></h1>
+<!-- HERO -->
 
-    <p>
-      Website gaming modern dengan tampilan dark neon.
-      Cocok untuk portofolio, komunitas game,
-      project coding, maupun landing page server.
-    </p>
+<section class="hero">
 
-    <a href="#project" class="btn">START NOW</a>
+<div class="hero-content">
 
-  </section>
+<h1>PREMIUM DIGITAL STORE</h1>
 
-  <section id="project">
+<p>
+Menyediakan berbagai akun premium murah,
+aman, terpercaya dan fast respon.
+Canva Pro, Alight Motion, YouTube Premium,
+Netflix dan lainnya.
+</p>
 
-    <h1 class="title">PROJECT</h1>
+</div>
 
-    <div class="cards">
+</section>
 
-      <div class="card">
-        <h2>Gaming</h2>
-        <p>
-          Desain modern dengan nuansa gaming futuristik.
-        </p>
-      </div>
+<!-- STATS -->
 
-      <div class="card">
-        <h2>Fast</h2>
-        <p>
-          Ringan dan cepat dibuka di semua device.
-        </p>
-      </div>
+<div class="stats">
 
-      <div class="card">
-        <h2>Responsive</h2>
-        <p>
-          Tampilan otomatis menyesuaikan layar HP maupun PC.
-        </p>
-      </div>
+<div class="stat orange">
+🔥 1.922 Pesanan
+</div>
 
-    </div>
+<div class="stat blue">
+👁 19.233 Pengunjung
+</div>
 
-  </section>
+<div class="stat green">
+✅ Trusted Seller
+</div>
 
-  <section id="about">
+</div>
 
-    <h1 class="title">ABOUT</h1>
+<!-- TITLE -->
 
-    <div class="about">
-      GilangXD adalah website bertema gaming dan coding
-      dengan desain simple, modern, dan elegan.
-      Dibuat menggunakan HTML dan CSS tanpa framework tambahan.
-    </div>
+<div class="section-title">
+Produk Premium
+</div>
 
-  </section>
+<!-- PRODUCTS -->
 
-  <section id="contact">
+<section class="products">
 
-    <h1 class="title">CONTACT</h1>
+<!-- CANVA -->
 
-    <div class="contact-box">
+<div class="card">
 
-      <input type="text" placeholder="Nama">
+<img src="https://cdn-icons-png.flaticon.com/512/5968/5968705.png">
 
-      <input type="email" placeholder="Email">
+<h2>Canva Premium</h2>
 
-      <textarea rows="5" placeholder="Pesan"></textarea>
+<div class="package">
 
-      <button>Kirim Pesan</button>
+<div class="package-title">
+1 Bulan
+</div>
 
-    </div>
+<div class="package-price">
+Rp 20K
+</div>
 
-  </section>
+<span>
+Garansi 30 hari & full premium
+</span>
 
-  <footer>
-    © 2026 GilangXD | All Rights Reserved
-  </footer>
+<a class="buy-btn"
+href="https://wa.me/6287886783807?text=Halo%20admin,%20saya%20mau%20order%20Canva%20Premium%201%20Bulan">
+Order Sekarang
+</a>
+
+</div>
+
+<div class="package">
+
+<div class="package-title">
+3 Bulan
+</div>
+
+<div class="package-price">
+Rp 50K
+</div>
+
+<span>
+Best seller & private account
+</span>
+
+<a class="buy-btn"
+href="https://wa.me/6287886783807?text=Halo%20admin,%20saya%20mau%20order%20Canva%20Premium%203%20Bulan">
+Order Sekarang
+</a>
+
+</div>
+
+<div class="package">
+
+<div class="package-title">
+1 Tahun
+</div>
+
+<div class="package-price">
+Rp 120K
+</div>
+
+<span>
+Full akses premium & garansi
+</span>
+
+<a class="buy-btn"
+href="https://wa.me/6287886783807?text=Halo%20admin,%20saya%20mau%20order%20Canva%20Premium%201%20Tahun">
+Order Sekarang
+</a>
+
+</div>
+
+</div>
+
+<!-- ALIGHT -->
+
+<div class="card">
+
+<img src="https://play-lh.googleusercontent.com/VRMW5Fj3MDeV1g9jzD7xjMnIKh4j-wcgUp3NEPoPFcAckU4iigFsMghvYDn8ApXNBQ">
+
+<h2>Alight Motion</h2>
+
+<div class="package">
+
+<div class="package-title">
+1 Bulan
+</div>
+
+<div class="package-price">
+Rp 15K
+</div>
+
+<span>
+No watermark & unlock effect
+</span>
+
+<a class="buy-btn"
+href="https://wa.me/6287886783807?text=Halo%20admin,%20saya%20mau%20order%20Alight%20Motion%201%20Bulan">
+Order Sekarang
+</a>
+
+</div>
+
+<div class="package">
+
+<div class="package-title">
+3 Bulan
+</div>
+
+<div class="package-price">
+Rp 35K
+</div>
+
+<span>
+Premium editing package
+</span>
+
+<a class="buy-btn"
+href="https://wa.me/6287886783807?text=Halo%20admin,%20saya%20mau%20order%20Alight%20Motion%203%20Bulan">
+Order Sekarang
+</a>
+
+</div>
+
+<div class="package">
+
+<div class="package-title">
+1 Tahun
+</div>
+
+<div class="package-price">
+Rp 70K
+</div>
+
+<span>
+Private account premium
+</span>
+
+<a class="buy-btn"
+href="https://wa.me/6287886783807?text=Halo%20admin,%20saya%20mau%20order%20Alight%20Motion%201%20Tahun">
+Order Sekarang
+</a>
+
+</div>
+
+</div>
+
+<!-- YOUTUBE -->
+
+<div class="card">
+
+<img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png">
+
+<h2>YouTube Premium</h2>
+
+<div class="package">
+
+<div class="package-title">
+1 Bulan
+</div>
+
+<div class="package-price">
+Rp 10K
+</div>
+
+<span>
+Anti iklan & music premium
+</span>
+
+<a class="buy-btn"
+href="https://wa.me/6287886783807?text=Halo%20admin,%20saya%20mau%20order%20YouTube%20Premium%201%20Bulan">
+Order Sekarang
+</a>
+
+</div>
+
+<div class="package">
+
+<div class="package-title">
+3 Bulan
+</div>
+
+<div class="package-price">
+Rp 25K
+</div>
+
+<span>
+Best deal & family premium
+</span>
+
+<a class="buy-btn"
+href="https://wa.me/6287886783807?text=Halo%20admin,%20saya%20mau%20order%20YouTube%20Premium%203%20Bulan">
+Order Sekarang
+</a>
+
+</div>
+
+<div class="package">
+
+<div class="package-title">
+1 Tahun
+</div>
+
+<div class="package-price">
+Rp 60K
+</div>
+
+<span>
+Private premium full akses
+</span>
+
+<a class="buy-btn"
+href="https://wa.me/6287886783807?text=Halo%20admin,%20saya%20mau%20order%20YouTube%20Premium%201%20Tahun">
+Order Sekarang
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+© 2026 Gilz Store — Fast & Trusted Premium Store
+</footer>
 
 </body>
 </html>
