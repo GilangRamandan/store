@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Gilz Store</title>
+
+<link rel="stylesheet"
+href="style.css">
+
+<link rel="stylesheet"
+href="responsive.css">
+
+</head>
+<script src="popup.js"></script>
+<script src="animation.js"></script>
+<body>
+
+<!-- LOADER -->
+
+<div id="loader">
+
+<div class="loader-box">
+
+<img src="gilz.png">
+
+<h1>Gilz Store</h1>
+
+</div>
+
+</div>
+
+<!-- NAVBAR -->
+
+<header>
+
+<div class="logo">
+
+<img src="gilz.png">
+
+<h1>Gilz Store</h1>
+
+</div>
+
+<nav>
+
+<a href="#">Home</a>
+<a href="#produk">Produk</a>
+<a href="#about">About</a>
+<a href="#contact">Contact</a>
+
+</nav>
+
+</header>
+
+<!-- HERO -->
+
+<section class="hero">
+
+<div class="hero-text">
+
+<h2>
+Premium Apps Store
+</h2>
+
+<p>
+Murah • Fast Response • Aman
+</p>
+
+<a href="#produk"
+class="hero-btn">
+
+Lihat Produk
+
+</a>
+
+</div>
+
+</section>
+
+<!-- SEARCH -->
+
+<div class="search-box">
+
+<input
+type="text"
+id="searchInput"
+placeholder="Cari aplikasi...">
+
+</div>
+
+<!-- CATEGORY -->
+
+<div class="category">
+
+<button onclick="filterApps('all')">
+Semua
+</button>
+
+<button onclick="filterApps('streaming')">
+Streaming
+</button>
+
+<button onclick="filterApps('music')">
+Music
+</button>
+
+<button onclick="filterApps('editing')">
+Editing
+</button>
+
+</div>
+
+<!-- PRODUCTS -->
+
+<section class="products"
+id="produk">
+
+<!-- NETFLIX -->
+
+<div class="card streaming">
+
+<img src="Netflix.png">
+
+<h1>Netflix Premium</h1>
+
+<p>
+Streaming premium tanpa iklan.
+</p>
+
+<button
+onclick="openPopup('Netflix Premium')">
+
+Order Now
+
+</button>
+
+</div>
+
+<!-- SPOTIFY -->
+
+<div class="card music">
+
+<img src="spotify.png">
+
+<h1>Spotify Premium</h1>
+
+<p>
+Music premium tanpa batas.
+</p>
+
+<button
+onclick="openPopup('Spotify Premium')">
+
+Order Now
+
+</button>
+
+</div>
+
+<!-- YOUTUBE -->
+
+<div class="card streaming">
+
+<img src="youtube.png">
+
+<h1>YouTube Premium</h1>
+
+<p>
+Nonton tanpa iklan.
+</p>
+
+<button
+onclick="openPopup('YouTube Premium')">
+
+Order Now
+
+</button>
+
+</div>
+
+<!-- CAPCUT -->
+
+<div class="card editing">
+
+<img src="capcut.png">
+
+<h1>CapCut Pro</h1>
+
+<p>
+Edit premium tanpa watermark.
+</p>
+
+<button
+onclick="openPopup('CapCut Pro')">
+
+Order Now
+
+</button>
+
+</div>
+
+<!-- CHATGPT -->
+
+<div class="card">
+
+<img src="chatgpt.png">
+
+<h1>ChatGPT Plus</h1>
+
+<p>
+Akses AI premium lebih cepat.
+</p>
+
+<button
+onclick="openPopup('ChatGPT Plus')">
+
+Order Now
+
+</button>
+
+</div>
+
+<!-- CANVA -->
+
+<div class="card editing">
+
+<img src="canva.png">
+
+<h1>Canva Pro</h1>
+
+<p>
+Unlock semua fitur premium.
+</p>
+
+<button
+onclick="openPopup('Canva Pro')">
+
+Order Now
+
+</button>
+
+</div>
+
+</section>
+
+<!-- POPUP -->
+
+<div class="popup hidden"
+id="popup">
+
+<div class="popup-box">
+
+<span class="close"
+onclick="closePopup()">
+
+×
+
+</span>
+
+<h2 id="popup-title">
+
+Produk
+
+</h2>
+
+<label class="option">
+
+<input type="radio"
+name="paket"
+value="1 Bulan - Rp 8K"
+checked>
+
+1 Bulan - Rp 8K
+
+</label>
+
+<label class="option">
+
+<input type="radio"
+name="paket"
+value="2 Bulan - Rp 15K">
+
+2 Bulan - Rp 15K
+
+</label>
+
+<label class="option">
+
+<input type="radio"
+name="paket"
+value="3 Bulan - Rp 20K">
+
+3 Bulan - Rp 20K
+
+</label>
+
+<input
+type="email"
+class="email-input"
+placeholder="Masukkan Email">
+
+<button
+class="checkout-btn"
+onclick="checkout()">
+
+Checkout
+
+</button>
+
+</div>
+
+</div>
+
+<!-- ABOUT -->
+
+<section class="about"
+id="about">
+
+<h2>About Gilz Store</h2>
+
+<p>
+Store premium apps murah dan terpercaya.
+</p>
+
+</section>
+
+<!-- CONTACT -->
+
+<section class="contact"
+id="contact">
+
+<h2>Contact Admin</h2>
+
+<a
+href="https://wa.me/6287886783807"
+class="contact-box">
+
+WhatsApp Admin
+
+</a>
+
+<a
+href="https://instagram.com"
+class="contact-box">
+
+Instagram Store
+
+</a>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+
+© 2026 Gilz Store
+
+</footer>
+
+<script src="script.js"></script>
+<script src="loader.js"></script>
+<script src="search.js"></script>
+<script src="category.js"></script>
+
+</body>
+</html>
