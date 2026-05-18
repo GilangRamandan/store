@@ -1,3 +1,4 @@
+```css
 *{
 margin:0;
 padding:0;
@@ -7,9 +8,37 @@ scroll-behavior:smooth;
 }
 
 body{
-background:#07111f;
+background:linear-gradient(
+-45deg,
+#07111f,
+#0d1b2f,
+#07111f,
+#001f3f
+);
+
+background-size:400% 400%;
+animation:bgMove 15s ease infinite;
+
 color:white;
 overflow-x:hidden;
+}
+
+/* BACKGROUND BERJALAN */
+
+@keyframes bgMove{
+
+0%{
+background-position:0% 50%;
+}
+
+50%{
+background-position:100% 50%;
+}
+
+100%{
+background-position:0% 50%;
+}
+
 }
 
 /* LOADER */
@@ -62,6 +91,7 @@ position:sticky;
 top:0;
 z-index:999;
 border-bottom:2px solid #00eaff;
+backdrop-filter:blur(10px);
 }
 
 .logo{
@@ -140,6 +170,7 @@ transition:.3s;
 
 .hero-btn:hover{
 transform:scale(1.05);
+box-shadow:0 0 20px #00eaff;
 }
 
 /* SEARCH */
@@ -206,13 +237,18 @@ border:2px solid #00eaff;
 border-radius:20px;
 padding:20px;
 transition:.3s;
+backdrop-filter:blur(10px);
+}
+
+.card:hover{
+transform:translateY(-8px);
+box-shadow:0 0 20px rgba(0,234,255,.5);
 }
 
 .card.show{
 opacity:1;
 transform:translateY(0);
 }
-
 
 .card img{
 width:100%;
@@ -248,6 +284,7 @@ transition:.3s;
 
 .card button:hover{
 transform:scale(1.03);
+box-shadow:0 0 20px #00eaff;
 }
 
 /* POPUP */
@@ -341,6 +378,7 @@ transition:.3s;
 
 .checkout-btn:hover{
 transform:scale(1.03);
+box-shadow:0 0 20px #00eaff;
 }
 
 .hidden{
@@ -399,6 +437,7 @@ transition:.3s;
 background:#00eaff;
 color:black;
 transform:scale(1.03);
+box-shadow:0 0 20px #00eaff;
 }
 
 /* FOOTER */
@@ -434,4 +473,4 @@ width:100%;
 }
 
 }
-}
+```
