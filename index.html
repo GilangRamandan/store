@@ -1,371 +1,301 @@
 <!DOCTYPE html>
 <html lang="id">
-
 <head>
-
-<meta charset="UTF-8">
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
-
-<title>Gilz Store</title>
-
-<link rel="stylesheet"
-href="style.css">
-
-<link rel="stylesheet"
-href="responsive.css">
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Premium Apps Store</title>
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0;font-family:Arial,sans-serif}
+    html{scroll-behavior:smooth}
+    body{background:#080914;color:white;padding-bottom:30px}
+    header{position:sticky;top:0;z-index:10;background:rgba(10,12,28,.96);border-bottom:1px solid #222541;padding:10px 12px}
+    .topbar{display:flex;align-items:center;gap:10px}
+    .brand{font-size:15px;font-weight:800;color:#38bdf8;white-space:nowrap}
+    .search{flex:1;background:#15172b;border:1px solid #2b2e4d;color:white;padding:9px 12px;border-radius:999px;outline:none;font-size:12px;min-width:0}
+    .nav{display:flex;gap:7px;overflow-x:auto;margin-top:10px;padding-bottom:2px}
+    .nav a{border:0;background:#1a1c33;color:#dbeafe;padding:8px 12px;border-radius:999px;font-size:11px;white-space:nowrap;text-decoration:none}
+    .nav a.active,.nav a:hover{background:linear-gradient(135deg,#0ea5e9,#6366f1);color:white}
+    .hero{margin:14px;border-radius:16px;min-height:135px;background:linear-gradient(135deg,#111827,#0f3b68,#111827);display:flex;align-items:center;justify-content:center;text-align:center;padding:22px;box-shadow:0 10px 35px rgba(0,0,0,.35)}
+    .hero h1{font-size:30px;text-shadow:0 0 15px rgba(56,189,248,.6)}
+    .hero p{margin-top:7px;color:#cbd5e1;font-size:13px}
+    .hero-buttons{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-top:13px}
+    .hero-buttons a{font-size:12px;text-decoration:none;color:white;background:#16a34a;padding:9px 13px;border-radius:999px;font-weight:700}
+    .hero-buttons a.secondary{background:#1f2937;border:1px solid #334155}
+    .section-title{padding:2px 14px 12px;display:flex;align-items:center;justify-content:space-between}
+    .section-title h2{font-size:17px}
+    .section-title span{font-size:11px;color:#94a3b8}
+    .tabs{display:flex;gap:8px;overflow-x:auto;padding:0 14px 14px}
+    .tab{border:0;background:#1a1c33;color:#dbeafe;padding:9px 13px;border-radius:999px;font-size:12px;white-space:nowrap;cursor:pointer}
+    .tab.active{background:linear-gradient(135deg,#0ea5e9,#6366f1);color:white}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;padding:0 10px}
+    .card{background:#121322;border:1px solid #242742;border-radius:13px;overflow:hidden;cursor:pointer;transition:.2s;min-width:0}
+    .card:hover{transform:translateY(-3px);border-color:#38bdf8}
+    .app-img{height:88px;display:flex;align-items:center;justify-content:center;font-size:30px;font-weight:800;color:white;position:relative}
+    .badge{position:absolute;left:6px;bottom:6px;font-size:8px;background:rgba(0,0,0,.65);padding:4px 5px;border-radius:5px}
+    .info{padding:7px}
+    .info h3{font-size:10.5px;margin-bottom:8px;line-height:1.25;min-height:27px}
+    .variants{background:#191b31;border:1px solid #282b48;color:#8ea0c8;font-size:9px;padding:5px;border-radius:6px;margin-bottom:8px}
+    .bottom{display:flex;align-items:center;justify-content:space-between;gap:5px}
+    .price{font-size:10px;color:#22d3ee;font-weight:700}
+    .stock{font-size:9px;background:#064e3b;color:#86efac;padding:4px 5px;border-radius:6px;white-space:nowrap}
+    .content-section{margin:16px 10px 0;padding:14px;background:#111322;border:1px solid #242742;border-radius:15px}
+    .content-section h2{font-size:18px;margin-bottom:9px;color:#e0f2fe}
+    .content-section p{font-size:13px;color:#cbd5e1;line-height:1.55;margin-bottom:8px}
+    .mini-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:9px;margin-top:10px}
+    .mini-card{background:#17192e;border:1px solid #2b2e4d;border-radius:12px;padding:11px}
+    .mini-card b{display:block;font-size:13px;margin-bottom:5px}
+    .mini-card span{font-size:11px;color:#94a3b8;line-height:1.4}
+    .socials{display:grid;grid-template-columns:repeat(2,1fr);gap:9px;margin-top:10px}
+    .socials a{display:block;text-decoration:none;color:white;background:#17192e;border:1px solid #2b2e4d;padding:12px;border-radius:12px;font-size:13px;font-weight:700}
+    .socials a:hover{border-color:#38bdf8}
+    .track-box{display:flex;gap:8px;margin-top:10px}
+    .track-box input{flex:1;background:#15172b;border:1px solid #2b2e4d;color:white;padding:11px;border-radius:12px;outline:none;min-width:0}
+    .track-box button{border:0;background:#0ea5e9;color:white;padding:11px 13px;border-radius:12px;font-weight:700;cursor:pointer}
+    .track-result{margin-top:9px;color:#86efac;font-size:12px;display:none}
+    footer{text-align:center;color:#64748b;font-size:11px;padding:20px 10px 0}
+    .modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.72);z-index:99;align-items:center;justify-content:center;padding:16px}
+    .modal.show{display:flex}
+    .modal-box{width:100%;max-width:360px;background:#111322;border:1px solid #2b2e4d;border-radius:18px;padding:16px;box-shadow:0 20px 60px rgba(0,0,0,.55)}
+    .modal-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+    .modal-head h2{font-size:18px}
+    .close{background:#242742;color:white;border:0;width:32px;height:32px;border-radius:50%;font-size:18px;cursor:pointer}
+    .option{width:100%;border:1px solid #2b2e4d;background:#181a30;color:white;border-radius:12px;padding:12px;margin-top:9px;display:flex;align-items:center;justify-content:space-between;cursor:pointer}
+    .option:hover{border-color:#38bdf8;background:#1d2140}
+    .order-btn{display:block;text-align:center;text-decoration:none;margin-top:14px;background:#16a34a;color:white;padding:12px;border-radius:12px;font-weight:700;font-size:14px}
+    .note{margin-top:10px;color:#94a3b8;font-size:11px;line-height:1.4}
+    @media(min-width:700px){
+      body{max-width:900px;margin:auto}
+      .grid{grid-template-columns:repeat(4,1fr)}
+      .app-img{height:120px}
+    }
+  </style>
 </head>
-<script src="popup.js"></script>
-<script src="animation.js"></script>
 <body>
-
-<!-- LOADER -->
-
-<div id="loader">
-
-<div class="loader-box">
-
-<img src="gilz.png">
-
-<h1>Gilz Store</h1>
-
-</div>
-
-</div>
-
-<!-- NAVBAR -->
-
-<header>
-
-<div class="logo">
-
-<img src="gilz.png">
-
-<h1>Gilz Store</h1>
-
-</div>
-
-<nav>
-
-<a href="#">Home</a>
-<a href="#produk">Produk</a>
-<a href="#about">About</a>
-<a href="#contact">Contact</a>
-
-</nav>
-
-</header>
-
-<!-- HERO -->
-
-<section class="hero">
-
-<div class="hero-text">
-
-<h2>
-Premium Apps Store
-</h2>
-
-<p>
-Murah • Fast Response • Aman
-</p>
-
-<a href="#produk"
-class="hero-btn">
-
-Lihat Produk
-
-</a>
-
-</div>
-
-</section>
-
-<!-- SEARCH -->
-
-<div class="search-box">
-
-<input
-type="text"
-id="searchInput"
-placeholder="Cari aplikasi...">
-
-</div>
-
-<!-- CATEGORY -->
-
-<div class="category">
-
-<button onclick="filterApps('all')">
-Semua
-</button>
-
-<button onclick="filterApps('streaming')">
-Streaming
-</button>
-
-<button onclick="filterApps('music')">
-Music
-</button>
-
-<button onclick="filterApps('editing')">
-Editing
-</button>
-
-</div>
-
-<!-- PRODUCTS -->
-
-<section class="products"
-id="produk">
-
-<!-- NETFLIX -->
-
-<div class="card streaming">
-
-<img src="Netflix.png">
-
-<h1>Netflix Premium</h1>
-
-<p>
-Streaming premium tanpa iklan.
-</p>
-
-<button
-onclick="openPopup('Netflix Premium')">
-
-Order Now
-
-</button>
-
-</div>
-
-<!-- SPOTIFY -->
-
-<div class="card music">
-
-<img src="spotify.png">
-
-<h1>Spotify Premium</h1>
-
-<p>
-Music premium tanpa batas.
-</p>
-
-<button
-onclick="openPopup('Spotify Premium')">
-
-Order Now
-
-</button>
-
-</div>
-
-<!-- YOUTUBE -->
-
-<div class="card streaming">
-
-<img src="youtube.png">
-
-<h1>YouTube Premium</h1>
-
-<p>
-Nonton tanpa iklan.
-</p>
-
-<button
-onclick="openPopup('YouTube Premium')">
-
-Order Now
-
-</button>
-
-</div>
-
-<!-- CAPCUT -->
-
-<div class="card editing">
-
-<img src="capcut.png">
-
-<h1>CapCut Pro</h1>
-
-<p>
-Edit premium tanpa watermark.
-</p>
-
-<button
-onclick="openPopup('CapCut Pro')">
-
-Order Now
-
-</button>
-
-</div>
-
-<!-- CHATGPT -->
-
-<div class="card">
-
-<img src="chatgpt.png">
-
-<h1>ChatGPT Plus</h1>
-
-<p>
-Akses AI premium lebih cepat.
-</p>
-
-<button
-onclick="openPopup('ChatGPT Plus')">
-
-Order Now
-
-</button>
-
-</div>
-
-<!-- CANVA -->
-
-<div class="card editing">
-
-<img src="canva.png">
-
-<h1>Canva Pro</h1>
-
-<p>
-Unlock semua fitur premium.
-</p>
-
-<button
-onclick="openPopup('Canva Pro')">
-
-Order Now
-
-</button>
-
-</div>
-
-</section>
-
-<!-- POPUP -->
-
-<div class="popup hidden"
-id="popup">
-
-<div class="popup-box">
-
-<span class="close"
-onclick="closePopup()">
-
-×
-
-</span>
-
-<h2 id="popup-title">
-
-Produk
-
-</h2>
-
-<label class="option">
-
-<input type="radio"
-name="paket"
-value="1 Bulan - Rp 8K"
-checked>
-
-1 Bulan - Rp 8K
-
-</label>
-
-<label class="option">
-
-<input type="radio"
-name="paket"
-value="2 Bulan - Rp 15K">
-
-2 Bulan - Rp 15K
-
-</label>
-
-<label class="option">
-
-<input type="radio"
-name="paket"
-value="3 Bulan - Rp 20K">
-
-3 Bulan - Rp 20K
-
-</label>
-
-<input
-type="email"
-class="email-input"
-placeholder="Masukkan Email">
-
-<button
-class="checkout-btn"
-onclick="checkout()">
-
-Checkout
-
-</button>
-
-</div>
-
-</div>
-
-<!-- ABOUT -->
-
-<section class="about"
-id="about">
-
-<h2>About Gilz Store</h2>
-
-<p>
-Store premium apps murah dan terpercaya.
-</p>
-
-</section>
-
-<!-- CONTACT -->
-
-<section class="contact"
-id="contact">
-
-<h2>Contact Admin</h2>
-
-<a
-href="https://wa.me/6287886783807"
-class="contact-box">
-
-WhatsApp Admin
-
-</a>
-
-<a
-href="https://instagram.com"
-class="contact-box">
-
-Instagram Store
-
-</a>
-
-</section>
-
-<!-- FOOTER -->
-
-<footer>
-
-© 2026 Gilz Store
-
-</footer>
-
-<script src="script.js"></script>
-<script src="loader.js"></script>
-<script src="search.js"></script>
-<script src="category.js"></script>
-
+  <header>
+    <div class="topbar">
+      <div class="brand">⚡ PremiumStore</div>
+      <input class="search" id="search" type="text" placeholder="Cari produk..." />
+    </div>
+    <nav class="nav">
+      <a href="#home" class="active">Dashboard</a>
+      <a href="#produk">Produk</a>
+      <a href="#lacak">Lacak Pesanan</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+      <a href="#testimoni">Testimoni</a>
+    </nav>
+  </header>
+
+  <section class="hero" id="home">
+    <div>
+      <h1>PREMIUM STORE</h1>
+      <p>Aplikasi premium legal, cepat, dan terpercaya</p>
+      <div class="hero-buttons">
+        <a href="#produk">Lihat Produk</a>
+        <a class="secondary" href="#contact">Hubungi Admin</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="produk">
+    <div class="section-title">
+      <h2>Produk Premium</h2>
+      <span>12 aplikasi</span>
+    </div>
+
+    <div class="tabs">
+      <button class="tab active" onclick="filterCategory('all', this)">Semua</button>
+      <button class="tab" onclick="filterCategory('editing', this)">Editing</button>
+      <button class="tab" onclick="filterCategory('streaming', this)">Streaming</button>
+      <button class="tab" onclick="filterCategory('music', this)">Music</button>
+      <button class="tab" onclick="filterCategory('ai', this)">AI</button>
+    </div>
+
+    <main class="grid" id="productGrid"></main>
+  </section>
+
+  <section class="content-section" id="lacak">
+    <h2>📦 Lacak Pesanan</h2>
+    <p>Masukkan kode pesanan kamu. Ini masih contoh tampilan, nanti bisa disambungkan ke database kalau websitenya sudah lebih besar.</p>
+    <div class="track-box">
+      <input id="trackInput" placeholder="Contoh: PS-12345" />
+      <button onclick="trackOrder()">Cek</button>
+    </div>
+    <div class="track-result" id="trackResult">Pesanan ditemukan: sedang diproses admin ✅</div>
+  </section>
+
+  <section class="content-section" id="about">
+    <h2>ℹ️ About Store</h2>
+    <p>PremiumStore adalah toko digital untuk pemesanan aplikasi premium. Pilih produk, pilih durasi paket, lalu checkout melalui WhatsApp.</p>
+    <div class="mini-grid">
+      <div class="mini-card"><b>⚡ Fast Respond</b><span>Admin siap bantu proses pesanan kamu.</span></div>
+      <div class="mini-card"><b>💬 Via WhatsApp</b><span>Order langsung masuk ke chat admin.</span></div>
+      <div class="mini-card"><b>📱 Mobile Friendly</b><span>Tampilan enak dibuka dari HP.</span></div>
+      <div class="mini-card"><b>🔒 Aman</b><span>Gunakan produk resmi/legal biar aman.</span></div>
+    </div>
+  </section>
+
+  <section class="content-section" id="contact">
+    <h2>📞 Contact & Social Media</h2>
+    <p>Hubungi admin lewat kontak di bawah ini.</p>
+    <div class="socials">
+      <a id="waLink" href="#" target="_blank">🟢 WhatsApp</a>
+      <a href="https://instagram.com/usernamekamu" target="_blank">📷 Instagram</a>
+      <a href="https://tiktok.com/@usernamekamu" target="_blank">🎵 TikTok</a>
+      <a href="mailto:emailkamu@gmail.com">✉️ Email</a>
+    </div>
+  </section>
+
+  <section class="content-section" id="testimoni">
+    <h2>⭐ Testimoni</h2>
+    <div class="mini-grid">
+      <div class="mini-card"><b>Raka</b><span>Proses cepat, admin ramah.</span></div>
+      <div class="mini-card"><b>Dina</b><span>Webnya gampang dipakai.</span></div>
+      <div class="mini-card"><b>Fajar</b><span>Order langsung diarahkan ke WA.</span></div>
+      <div class="mini-card"><b>Salsa</b><span>Produk rapi dan jelas.</span></div>
+    </div>
+  </section>
+
+  <footer>
+    © 2026 PremiumStore. All rights reserved.
+  </footer>
+
+  <div class="modal" id="modal">
+    <div class="modal-box">
+      <div class="modal-head">
+        <h2 id="modalTitle">Pilih Paket</h2>
+        <button class="close" onclick="closeModal()">×</button>
+      </div>
+
+      <button class="option" onclick="choosePlan(1)"><span>1 Bulan</span><b id="price1">Rp0</b></button>
+      <button class="option" onclick="choosePlan(2)"><span>2 Bulan</span><b id="price2">Rp0</b></button>
+      <button class="option" onclick="choosePlan(3)"><span>3 Bulan</span><b id="price3">Rp0</b></button>
+
+      <a class="order-btn" id="orderBtn" href="#" target="_blank">Pesan via WhatsApp</a>
+      <p class="note">Ganti nomor WhatsApp, Instagram, TikTok, dan Email di kode HTML.</p>
+    </div>
+  </div>
+
+  <script>
+    const whatsappNumber = "6281234567890"; // GANTI DENGAN NOMOR WA KAMU
+
+    const products = [
+      { name:"Canva Pro", category:"editing", price:3000, stock:8, icon:"C", color:"#14b8a6" },
+      { name:"YouTube Premium", category:"streaming", price:4000, stock:12, icon:"▶", color:"#dc2626" },
+      { name:"ChatGPT Plus", category:"ai", price:20000, stock:5, icon:"AI", color:"#111827" },
+      { name:"Alight Motion Pro", category:"editing", price:12000, stock:7, icon:"◎", color:"#0f172a" },
+      { name:"CapCut Pro", category:"editing", price:5000, stock:10, icon:"X", color:"#f8fafc", dark:true },
+      { name:"Disney Premium", category:"streaming", price:12000, stock:4, icon:"D+", color:"#1e3a8a" },
+      { name:"Viu Premium", category:"streaming", price:3000, stock:6, icon:"V", color:"#eab308" },
+      { name:"Apple Music", category:"music", price:7000, stock:9, icon:"♫", color:"#f43f5e" },
+      { name:"Spotify Premium", category:"music", price:12000, stock:11, icon:"S", color:"#22c55e" },
+      { name:"Netflix Premium", category:"streaming", price:18000, stock:3, icon:"N", color:"#991b1b" },
+      { name:"Prime Video", category:"streaming", price:10000, stock:6, icon:"P", color:"#0284c7" },
+      { name:"PicsArt Gold", category:"editing", price:8000, stock:7, icon:"P", color:"#7c3aed" }
+    ];
+
+    const grid = document.getElementById("productGrid");
+    const modal = document.getElementById("modal");
+    const modalTitle = document.getElementById("modalTitle");
+    const orderBtn = document.getElementById("orderBtn");
+    const searchInput = document.getElementById("search");
+    const waLink = document.getElementById("waLink");
+
+    let selectedProduct = null;
+    let selectedPlan = 1;
+    let currentCategory = "all";
+    let currentList = products;
+
+    waLink.href = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent("Halo kak, saya mau tanya produk premium.")}`;
+
+    function rupiah(number){return "Rp " + number.toLocaleString("id-ID")}
+
+    function applyFilters(){
+      const keyword = searchInput.value.toLowerCase();
+      let list = products.filter(p => p.name.toLowerCase().includes(keyword));
+      if(currentCategory !== "all"){
+        list = list.filter(p => p.category === currentCategory);
+      }
+      renderProducts(list);
+    }
+
+    function filterCategory(category, button){
+      currentCategory = category;
+      document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
+      button.classList.add("active");
+      applyFilters();
+    }
+
+    function renderProducts(list){
+      currentList = list;
+      grid.innerHTML = "";
+      if(list.length === 0){
+        grid.innerHTML = `<p style="grid-column:1/-1;color:#94a3b8;font-size:13px;padding:10px">Produk tidak ditemukan.</p>`;
+        return;
+      }
+      list.forEach((product,index)=>{
+        const card = document.createElement("div");
+        card.className = "card";
+        card.onclick = () => openModal(index);
+        card.innerHTML = `
+          <div class="app-img" style="background:${product.color};color:${product.dark ? '#111827':'white'}">
+            ${product.icon}
+            <span class="badge">📦 APP PREMIUM</span>
+          </div>
+          <div class="info">
+            <h3>${product.name}</h3>
+            <div class="variants">3 varian tersedia</div>
+            <div class="bottom">
+              <div class="price">${rupiah(product.price)}</div>
+              <div class="stock">Stok: ${product.stock}</div>
+            </div>
+          </div>`;
+        grid.appendChild(card);
+      });
+    }
+
+    function openModal(index){
+      selectedProduct = currentList[index];
+      selectedPlan = 1;
+      modalTitle.textContent = selectedProduct.name;
+      document.getElementById("price1").textContent = rupiah(selectedProduct.price);
+      document.getElementById("price2").textContent = rupiah(selectedProduct.price * 2);
+      document.getElementById("price3").textContent = rupiah(selectedProduct.price * 3);
+      updateWhatsappLink();
+      modal.classList.add("show");
+    }
+
+    function closeModal(){modal.classList.remove("show")}
+
+    function choosePlan(month){
+      selectedPlan = month;
+      updateWhatsappLink();
+    }
+
+    function updateWhatsappLink(){
+      const total = selectedProduct.price * selectedPlan;
+      const message = `Halo kak, saya mau pesan ${selectedProduct.name} paket ${selectedPlan} bulan. Total ${rupiah(total)}.`;
+      orderBtn.href = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+      orderBtn.textContent = `Pesan ${selectedPlan} Bulan - ${rupiah(total)}`;
+    }
+
+    function trackOrder(){
+      const input = document.getElementById("trackInput").value.trim();
+      const result = document.getElementById("trackResult");
+      if(!input){
+        result.style.display = "block";
+        result.style.color = "#facc15";
+        result.textContent = "Masukkan kode pesanan dulu ya.";
+        return;
+      }
+      result.style.display = "block";
+      result.style.color = "#86efac";
+      result.textContent = `Kode ${input}: pesanan sedang diproses admin ✅`;
+    }
+
+    searchInput.addEventListener("input", applyFilters);
+    modal.addEventListener("click",(e)=>{if(e.target===modal)closeModal()});
+    renderProducts(products);
+  </script>
 </body>
 </html>
